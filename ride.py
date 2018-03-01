@@ -7,4 +7,5 @@ class Ride(object):
         self.earliestStart = earliestStart
         self.latestFinish = latestFinish
 
-
+    def distance():
+    	return abs(self.startIntersect[0] - self.finishIntersect[0]) + abs(self.startIntersect[1] - self.finishIntersect[1])
