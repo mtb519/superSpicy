@@ -25,15 +25,21 @@ def main():
     OurMap, Vehicles, Rides = read_input()
     Rides = sorted(Rides, key=Ride.getEarliestStartTime)
 
-    for rideNumber in range(0, len(Rides)):
+    for ride in Rides:
         highestScore = (0, None)
         for car in Vehicles:
-            score = car.score(OurMap, Rides[rideNumber])
+            score = car.score(OurMap, ride)
             if score > highestScore[0]:
                 highestScore = (score, car)
-        highestScore[1].assigned.append(Rides[rideNumber])
-
-        print(str(Rides[rideNumber].earliestStart))
+        if highestScore[0] > 0:
+            car = highestScore[1]
+            car.assigned.append(ride)
+            car.finishingCoords = ride.finishIntersect
+            distanceToStart = OurMap.distance(car.finishingCoords, ride.startIntersect)
+            car.finishingTime = car.finishingTime 
+            + distanceToStart 
+            + max(0, ride.earliestStart - (car.finishingTime + distanceToStart)) 
+            + ride.distance()
 
     output(Vehicles)
 

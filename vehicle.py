@@ -5,11 +5,11 @@ class Vehicle:
         self.finishingTime = 0 #step the car finishes its current ride
 
     def score(self, Map, Ride):
-		distanceToStart = Map.distance(self.finishingCoords, Ride.startIntersect)
-		waitTime = Ride.earliest_start - (self.finishingTime + distanceToStart)
-		if self.finishingTime + distanceToStart + max(0, waitTime) + Ride.distance() > Ride.latestFinish:
-			return 0
-		else:
-			bonus = int(waitTime >= 0) * Map.ride_bonus
-			score = (Ride.distance() + bonus) / (distanceToStart + max(0, waitTime) + 1)
-			return score
+        distanceToStart = Map.distance(self.finishingCoords, Ride.startIntersect)
+        waitTime = Ride.earliestStart - (self.finishingTime + distanceToStart)
+        if self.finishingTime + distanceToStart + max(0, waitTime) + Ride.distance() > Ride.latestFinish:
+            return 0
+        else:
+            bonus = int(waitTime >= 0) * Map.ride_bonus
+            score = (Ride.distance() + bonus) / (distanceToStart + max(0, waitTime) + 1)
+            return score
