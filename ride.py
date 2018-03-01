@@ -1,5 +1,5 @@
 class Ride(object):
-	
+    
     def __init__(self, index, startIntersect, finishIntersect, earliestStart, latestFinish):
         self.index = index
         self.startIntersect = startIntersect
@@ -8,7 +8,7 @@ class Ride(object):
         self.latestFinish = latestFinish
 
     def distance(self):
-    	return abs(self.startIntersect[0] - self.finishIntersect[0]) + abs(self.startIntersect[1] - self.finishIntersect[1])
+        return abs(self.startIntersect[0] - self.finishIntersect[0]) + abs(self.startIntersect[1] - self.finishIntersect[1])
     
     def getEarliestStartTime():
         return self.earliestStart
