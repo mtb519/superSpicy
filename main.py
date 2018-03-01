@@ -16,17 +16,24 @@ def read_input():
 
 def output(vehicles):
     for vehicle in vehicles:
-        string = str(len(vehicle))
+        string = str(len(vehicle.assigned))
         for ride in vehicle.assigned:
             string += " " + str(ride.index)
         print(string)
 
 def main():
     OurMap, Vehicles, Rides = read_input()
-        Rides = sorted(Rides, key=Ride.getEarliestStartTime)
+    Rides = sorted(Rides, key=Ride.getEarliestStartTime)
 
-        for rideNumber in range(0, len(Rides)):
-            print(rideNumber)
+    for rideNumber in range(0, len(Rides)):
+        highestScore = (0, None)
+        for car in Vehicles:
+            score = car.score(OurMap, Rides[rideNumber])
+            if score > highestScore[0]:
+                highestScore = (score, car)
+        highestScore[1].assigned.append(Rides[rideNumber])
+
+        print(str(Rides[rideNumber].earliestStart))
 
     output(Vehicles)
 
