@@ -23,6 +23,11 @@ def output(vehicles):
 
 def main():
 	OurMap, Vehicles, Rides = read_input()
+        Rides = sorted(Rides, key=Ride.getEarliestStartTime)
+
+        for rideNumber in range(0, len(Rides)):
+            print(rideNumber)
+
 	output(Vehicles)
 
 if __name__ == '__main__':
