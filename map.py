@@ -8,4 +8,3 @@ class Map(object):
 		self.num_rides = num_rides
 		self.ride_bonus = ride_bonus
 		self.num_steps = num_steps
-		
